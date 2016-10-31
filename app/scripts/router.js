@@ -3,6 +3,7 @@ var Backbone = require('backbone');
 var ReactDOM = require('react-dom');
 
 var AppComponent = require('./components/app.jsx').AppComponent;
+var OrderingContainer = require('./components/ordering.jsx').OrderingContainer;
 
 
 
@@ -19,6 +20,15 @@ var AppRouter = Backbone.Router.extend({
     );
   }
 });
+
+// var OrderingContainer =
+//
+// ReactDOM.render(
+//   React.createElement(OrderingContainer),
+//   document.getElementById('app')
+// );
+
+
 
 var router = new AppRouter();
 

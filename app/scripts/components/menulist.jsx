@@ -8,7 +8,11 @@ var MenuListItem = React.createClass({
   render: function(){
     var model = this.props.model;
     return (
-      <li> {model.get("item")} </li>
+      <li>
+        <div>{model.get("item")}: <span> ${model.get("price")}</span></div>
+        <div>Description: {model.get("description")}</div>
+        <button onClick={this.props.addToCart(model)} className="btn btn-success">Add Item</button>
+      </li>
     );
   }
 })
@@ -16,13 +20,13 @@ var MenuListItem = React.createClass({
 var MenuListComponent = React.createClass({
   render: function(){
     var collection = this.props.menu;
-    console.log(collection);
-
+    var self = this;
     var listOfItems = collection.map(function(item){
       return (
         <MenuListItem
           key={item.get('_id')}
           model={item}
+          addToCart={self.props.addToCart}
         />
       );
     });
