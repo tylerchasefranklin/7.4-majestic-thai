@@ -5,7 +5,13 @@ var MenuItem = Backbone.Model.extend({
 
 });
 
-var ItemCollection = Backbone.Collection.extend({
-  model: Item,
+var MenuItemCollection = Backbone.Collection.extend({
+  model: MenuItem,
   url: 'http://tiny-lasagna-server.herokuapp.com/collections/menu'
 });
+
+
+module.exports = {
+  MenuItem: MenuItem,
+  MenuItemCollection: MenuItemCollection
+};
