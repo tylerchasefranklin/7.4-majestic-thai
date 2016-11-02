@@ -3,78 +3,123 @@ HOST: http://polls.apiblueprint.org/
 
 # Majestic Thai
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+## Dishes Collection [/dishes]
 
-## Questions Collection [/questions]
-
-### List All Questions [GET]
+### List All Dishes [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "url": "/dishes",
+                "dishes": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
+                        "item": "Spring Rolls",,
+                        "id": ,
+                        "description": "Crispy vegetarian deep-fried spring rolls served with Thai sweet & sour sauce.",
+                        "price": 4.95
                     }, {
-                        "choice": "Python",
-                        "votes": 1024
+                        "dish": "Satay Chicken",,
+                        "id": 1,
+                        "description": "Chicken on skewers marinated ins pecial Thai Seasoning and grilled to perfections: served with peanut sauce and cucumber salad",
+                        "price": 7.95
                     }, {
-                        "choice": "Objective-C",
-                        "votes": 512
+                        "dish": "Basil Duck",,
+                        "id": 2,
+                        "description": "Semi-crispy dusk stir-fried in spicy basil sauce with sweet basil, fresh chili, garlic, onion, green beans, and bell peppe",
+                        "price": 17.95
                     }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
+                        "dish": "Pad See-U",,
+                        "id": 2,
+                        "description": "Stir-fried broad noodle with egg, broccoli and carrot in delicious sweet-garlic sauce",
+                        "price": 10.95
+                    }, {
+                        "dish": "Tom-Yum_Goong",,
+                        "id": 3,
+                        "description": "Thai spicy shrip soup wiht lemon grass, lime juice, chili paste, cilantro, red onion and mushroom",
+                        "price": 12.95
+                    }, 
                 ]
             }
         ]
 
-### Create a New Question [POST]
+## Dish Item [/dishes/{dishes_id}]
+        
+### List One Dish [GET]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
++ Response 200 (application.json)
+        
+            
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+            "url": "/dishes/3",
+            "dish": [
+                {
+                    "dish": "Tom-Yum_Goong",
+                    "id": 3,
+                    "description": "Thai spicy shrip soup wiht lemon grass, lime juice, chili paste, cilantro, red onion and mushroom",
+                    "price": 12.95
+                }, 
             ]
         }
+            
 
-+ Response 201 (application/json)
 
-    + Headers
+## Orders Collection [/orders]
 
-            Location: /questions/2
+### List All Orders [GET]
 
-    + Body
++ Response 200 (application.json)
 
+        [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "url": "orders,
+                "orders": [
                     {
-                        "choice": "Swift",
-                        "votes": 0
+                        "id": 1,
+                        "username": "Chase",
+                        "time": "12:42",
+                        "total": '25.85',
+                        "items_ordered": [
+                        "Tom-Yum_Goong",
+                        "Satay Chicken",
+                        "Spring Rolls"
+                        ],
                     }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
+                        "id": 2,
+                        "username": "Rees",
+                        "time": "5:41",
+                        "total": '28.90',
+                        "items_ordered": [
+                        "Basil Duck",
+                        "Pad See-U"
+                        ],
+                    },
                 ]
             }
+        ]
+
+
+## Order Item [/orders/2]
+
+### List One Order [GET]
+
++ Response 200 (application.json)
+
+        [
+            {
+                "url": "/orders/1",
+                "order": [
+                    {
+                         "id": 2,
+                        "username": "Rees",
+                        "time": "5:41",
+                        "total": '28.90',
+                        "items_ordered": [
+                        "Basil Duck",
+                        "Pad See-U"
+                        ],
+                    }
+                       
+                ]
+            }
+        ]
